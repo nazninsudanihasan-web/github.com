@@ -1,27 +1,28 @@
-name: Deploy Vite App
+name: Deploy Project
 
 on:
   push:
     branches:
       - main
 
+  schedule:
+    - cron: '0 0 * * *'
+
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 18
 
-      - name: Install
+      - name: Install Dependencies
         run: npm install
 
-      - name: Build
+      - name: Build Project
         run: npm run build
