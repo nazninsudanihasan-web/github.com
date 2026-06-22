@@ -1,4 +1,4 @@
-name: Deploy Project
+name: Deploy Vite App
 
 on:
   push:
@@ -7,18 +7,20 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Node
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
-      - name: Install Dependencies
+      - name: Install
         run: npm install
 
       - name: Build
